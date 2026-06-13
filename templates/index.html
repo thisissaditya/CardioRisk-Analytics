@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioRisk Analytics</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>❤️ CardioRisk Analytics</h2>
+            <p>Cardiovascular Risk Prediction</p>
+        </div>
+
+        <nav>
+            <ul>
+<li class="active">
+    <a href="#dashboard">Dashboard</a>
+</li>
+
+<li>
+    <a href="#models">Models</a>
+</li>
+
+<li>
+    <a href="#dataset">Recommendations</a>
+</li>
+
+<li>
+    <a href="#about">About</a>
+</li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>CDC BRFSS 2021 Dataset</p>
+            <p>308K+ Records</p>
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <h1>AI-Based Cardiovascular Risk Prediction</h1>
+            <div class="stats-grid">
+
+    <div class="stat-card">
+        <h2>308K+</h2>
+        <p>Patient Records</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>19</h2>
+        <p>Health Features</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>3</h2>
+        <p>ML Models</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>91.9%</h2>
+        <p>Best Accuracy</p>
+    </div>
+
+</div>
+            <p>Random Forest • Logistic Regression • Neural Network</p>
+        </header>
+
+        <section
+            class="content-grid"
+            id="dashboard"
+        >
+
+            <!-- INPUT PANEL -->
+            <div class="card input-panel">
+
+                <h2>Patient Information</h2>
+
+                <form id="predictionForm">
+
+                    <label>General Health</label>
+                    <select id="General_Health">
+                        <option>Poor</option>
+                        <option>Fair</option>
+                        <option>Good</option>
+                        <option>Very Good</option>
+                        <option>Excellent</option>
+                    </select>
+
+                    <label>Checkup</label>
+                    <select id="Checkup">
+                        <option>Within the past year</option>
+                        <option>Within the past 2 years</option>
+                        <option>Within the past 5 years</option>
+                        <option>5 or more years ago</option>
+                        <option>Never</option>
+                    </select>
+
+                    <label>Exercise</label>
+                    <select id="Exercise">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+
+                    <label>Diabetes</label>
+                    <select id="Diabetes">
+                        <option>No</option>
+                        <option>Yes</option>
+                        <option>No, pre-diabetes or borderline diabetes</option>
+                        <option>Yes, but female told only during pregnancy</option>
+                    </select>
+
+                    <label>Smoking History</label>
+                    <select id="Smoking_History">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+
+                    <label>Sex</label>
+                    <select id="Sex">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+
+                    <label>Age Category</label>
+                    <select id="Age_Category">
+                        <option>18-24</option>
+                        <option>25-29</option>
+                        <option>30-34</option>
+                        <option>35-39</option>
+                        <option>40-44</option>
+                        <option>45-49</option>
+                        <option>50-54</option>
+                        <option>55-59</option>
+                        <option>60-64</option>
+                        <option>65-69</option>
+                        <option>70-74</option>
+                        <option>75-79</option>
+                        <option>80+</option>
+                    </select>
+
+                    <label>Height (cm)</label>
+                    <input type="number" id="Height_cm" value="170">
+
+                    <label>Weight (kg)</label>
+                    <input type="number" id="Weight_kg" value="70">
+    
+    <label>BMI</label>
+    <input
+        type="number"
+        id="BMI"
+        readonly
+        placeholder="Auto Calculated"
+>
+
+<button
+    type="submit"
+    class="predict-btn">
+    Predict Risk
+</button>
+
+</div>
+
+                  
+
+                </form>
+
+            </div>
+
+            <!-- RESULT PANEL -->
+            <div class="card result-panel">
+
+                 <h2>Prediction Result</h2>
+
+    <!-- PASTE HERE -->
+
+    <div class="health-summary">
+
+        <div class="summary-card">
+            <h4>BMI Status</h4>
+            <p id="bmiStatus">Normal</p>
+        </div>
+
+        <div class="summary-card">
+            <h4>Age Group</h4>
+            <p id="ageDisplay">18-24</p>
+        </div>
+
+        <div class="summary-card">
+            <h4>Exercise</h4>
+            <p id="exerciseDisplay">Yes</p>
+        </div>
+
+        <div class="summary-card">
+            <h4>Smoking</h4>
+            <p id="smokingDisplay">No</p>
+        </div>
+
+    </div>
+
+    <div class="risk-box">
+
+    <div class="gauge">
+
+        <svg width="220" height="220">
+
+            <circle
+                class="gauge-bg"
+                cx="110"
+                cy="110"
+                r="90">
+            </circle>
+
+            <circle
+                class="gauge-progress"
+                cx="110"
+                cy="110"
+                r="90">
+            </circle>
+
+        </svg>
+
+        <div class="gauge-content">
+
+            <h1 id="overallRisk">--%</h1>
+
+            <p id="riskLevel">
+                Waiting for prediction...
+            </p>
+<span id="riskBadge" class="risk-badge">
+    LOW
+</span>
+        </div>
+
+    </div>
+
+</div>
+        
+                <div class="model-cards">
+
+                    <div class="model-card">
+                        <h3>Random Forest</h3>
+                        <p id="rfScore">--%</p>
+                    </div>
+
+                    <div class="model-card">
+                        <h3>Logistic Regression</h3>
+                        <p id="lrScore">--%</p>
+                    </div>
+
+                    <div class="model-card">
+                        <h3>Neural Network</h3>
+                        <p id="nnScore">--%</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CHARTS -->
+        <section
+           class="charts-section"
+           id="models"
+       >
+
+            <div class="card">
+                <h2>Model Comparison</h2>
+                <canvas id="modelChart"></canvas>
+            </div>
+
+        </section>
+
+        <!-- RECOMMENDATIONS -->
+        <section
+          class="card recommendations"
+          id="dataset"
+        >
+
+            <h2>Recommendations</h2>
+
+            <ul id="recommendationList">
+                <li>Predict to view recommendations</li>
+            </ul>
+
+        </section>
+<section
+    class="card"
+    id="about"
+>
+
+    <h2>About Project</h2>
+
+    <p>
+        CardioRisk Analytics predicts
+        cardiovascular disease risk
+        using Random Forest,
+        Logistic Regression,
+        and Neural Network models.
+    </p>
+
+    <br>
+
+    <p>
+        Dataset:
+        CDC BRFSS 2021
+        (308K+ records)
+    </p>
+
+    <br>
+
+    <p>
+        Built with
+        Flask,
+        Python,
+        HTML,
+        CSS,
+        JavaScript,
+        Chart.js
+    </p>
+
+</section>
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+<footer class="footer">
+
+    <h3>CardioRisk Analytics</h3>
+
+    <p>
+        AI-Based Cardiovascular Risk Prediction
+    </p>
+
+    <div class="footer-tech">
+
+        <span>Python</span>
+        <span>Flask</span>
+        <span>Machine Learning</span>
+        <span>Random Forest</span>
+        <span>Logistic Regression</span>
+        <span>Neural Network</span>
+
+    </div>
+
+    <p class="footer-copy">
+        © 2026 CardioRisk Analytics
+    </p>
+
+</footer>
+</body>
+</html>
