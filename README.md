@@ -84,25 +84,21 @@ Health Analytics Dashboard
 
 ## Screenshots
 
-## Screenshots
-
 ### Dashboard
 
-![Dashboard](assets/dashboard.png)
+![Dashboard](assets/screenshots/dashboard.png)
 
 ### Risk Prediction
 
-![Risk Prediction](assets/risk_prediction.png)
+![Risk Prediction](assets/screenshots/risk_prediction.png)
 
 ### Model Comparison
 
-![Model Comparison](assets/model_comparison.png)
+![Model Comparison](assets/screenshots/model_comparison.png)
 
 ### Recommendations
 
-![Recommendations](assets/recommendations.png)
-
-Add recommendations screenshot here
+![Recommendations](assets/screenshots/recommendation.png)
 
 ---
 ## Model Files
