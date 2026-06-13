@@ -14,16 +14,16 @@ The platform combines predictive modeling, health analytics, risk visualization,
 
 ## Features
 
-* Cardiovascular Disease Risk Prediction
-* Real-Time Health Analytics Dashboard
-* Automatic BMI Calculation
-* Interactive Risk Gauge
-* Personalized Health Recommendations
-* Random Forest Prediction Model
-* Logistic Regression Prediction Model
-* Neural Network Prediction Model
-* Model Performance Comparison
-* Responsive User Interface
+- Cardiovascular Disease Risk Prediction
+- Real-Time Health Analytics Dashboard
+- Automatic BMI Calculation
+- Interactive Risk Gauge
+- Personalized Health Recommendations
+- Random Forest Prediction Model
+- Logistic Regression Prediction Model
+- Neural Network Prediction Model
+- Model Performance Comparison
+- Responsive User Interface
 
 ---
 
@@ -31,12 +31,32 @@ The platform combines predictive modeling, health analytics, risk visualization,
 
 CDC BRFSS 2021 Dataset
 
-* 308,000+ Health Records
-* Multiple Lifestyle Indicators
-* Cardiovascular Disease Labels
+- 308,000+ Health Records
+- Multiple Lifestyle Indicators
+- Cardiovascular Disease Labels
 
-Source:
+Source:  
 https://www.kaggle.com/datasets/alphiree/cardiovascular-diseases-risk-prediction-dataset
+
+---
+
+## Model Files
+
+Pre-trained model files are not included in this repository due to GitHub file size limitations.
+
+To generate the models locally:
+
+```bash
+python train_models.py
+```
+
+Generated model files will be stored in the `models/` directory.
+
+Models Used:
+
+- Random Forest Classifier
+- Logistic Regression
+- Neural Network (MLP)
 
 ---
 
@@ -44,41 +64,43 @@ https://www.kaggle.com/datasets/alphiree/cardiovascular-diseases-risk-prediction
 
 ### Backend
 
-* Python
-* Flask
-* Scikit-Learn
-* Pandas
-* NumPy
-* Joblib
+- Python
+- Flask
+- Scikit-Learn
+- Pandas
+- NumPy
+- Joblib
 
 ### Frontend
 
-* HTML
-* CSS
-* JavaScript
-* Chart.js
+- HTML
+- CSS
+- JavaScript
+- Chart.js
 
 ### Machine Learning
 
-* Random Forest
-* Logistic Regression
-* Neural Network (MLP)
+- Random Forest
+- Logistic Regression
+- Neural Network (MLP)
 
 ---
 
 ## System Architecture
 
+```text
 User Input
-↓
+      ↓
 Data Validation
-↓
+      ↓
 Feature Processing
-↓
+      ↓
 Machine Learning Models
-↓
+      ↓
 Risk Prediction
-↓
+      ↓
 Health Analytics Dashboard
+```
 
 ---
 
@@ -101,14 +123,7 @@ Health Analytics Dashboard
 ![Recommendations](assets/screenshots/recommendation.png)
 
 ---
-## Model Files
 
-Pre-trained model files are not included in this repository due to GitHub's file size limitations.
-
-To generate the machine learning models locally:
-
-```bash
-python train_models.py
 ## Installation
 
 ```bash
@@ -118,6 +133,8 @@ cd CardioRisk-Analytics
 
 pip install -r requirements.txt
 
+python train_models.py
+
 python app.py
 ```
 
@@ -125,18 +142,23 @@ python app.py
 
 ## Future Improvements
 
-* Explainable AI (SHAP)
-* User Authentication
-* Medical Report Generation
-* Cloud Deployment
-* Mobile Application
+- Explainable AI (SHAP)
+- User Authentication
+- Medical Report Generation
+- Cloud Deployment
+- Mobile Application
 
 ---
 
 ## Author
 
-Purshottam Rakesh
+**Purshottam Rakesh**
 
-B.Tech CSE (AI & ML)
-
+B.Tech Computer Science Engineering (AI & ML)  
 VIT Bhopal University
+
+GitHub: https://github.com/thisissaditya
+
+---
+
+⭐ If you found this project useful, consider giving it a star.
