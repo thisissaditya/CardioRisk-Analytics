@@ -101,7 +101,14 @@ Add chart screenshot here
 Add recommendations screenshot here
 
 ---
+## Model Files
 
+Pre-trained model files are not included in this repository due to GitHub's file size limitations.
+
+To generate the machine learning models locally:
+
+```bash
+python train_models.py
 ## Installation
 
 ```bash
