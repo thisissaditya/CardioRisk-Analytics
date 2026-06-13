@@ -84,19 +84,23 @@ Health Analytics Dashboard
 
 ## Screenshots
 
+## Screenshots
+
 ### Dashboard
 
-Add dashboard screenshot here
+![Dashboard](assets/dashboard.png)
 
 ### Risk Prediction
 
-Add prediction screenshot here
+![Risk Prediction](assets/risk_prediction.png)
 
 ### Model Comparison
 
-Add chart screenshot here
+![Model Comparison](assets/model_comparison.png)
 
 ### Recommendations
+
+![Recommendations](assets/recommendations.png)
 
 Add recommendations screenshot here
 
